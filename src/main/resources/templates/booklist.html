@@ -23,13 +23,31 @@ th.table-header {
 	text-align: center;
 }
 
+.col-3 {width: 25%; }
+.col-6 {width: 50%;}
+
+
 
 </style>
 </head> 
-<body> 
-<h1 th:text="'Books'" /> 
-<table class="table table-striped">
+<body>
+<div class="row">
+  <div class="col-3">
+    <h1 th:text="'Books'" /> 
+  </div>
 
+  <div class="col-6"></div> 
+  <div class="col-3" style="text-align: right;">
+    <h5>   
+    <form th:action="@{/logout}" method="post">
+     	<span th:inline="text" style="font-size: 18px;">[[${#httpServletRequest.remoteUser}]]   </span>
+    	<input type="submit"value="Sign Out" style="font-size: 14px;"/>
+    </form>
+    </h5>
+  </div> 
+</div> 
+
+<table class="table table-striped">
 	<tr>
     <th class="table-header" th:text="'Author'"/>
     <th class="table-header" th:text="'Title'"/>

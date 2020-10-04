@@ -20,9 +20,10 @@ public class BookController {
 	@Autowired
 	CategoryRepository categoryRepository;
 
-	@GetMapping("/index")
-	public String getIndexPage (Model model) {			
-		return "index";
+	@GetMapping("/")
+	public String getIndexPage (Model model) {
+		model.addAttribute("booklist", bookRepository.findAll());	
+		return "booklist";
 	}
 	
 	@GetMapping("/booklist")
@@ -51,14 +52,15 @@ public class BookController {
 	}
 	
 	@GetMapping("/edit/{id}")
-	public String editBook (@PathVariable("id")Long bookId, Model model) {	
-		model.addAttribute("book", bookRepository.findById(bookId).get());		
+	public String editBook (@PathVariable("id")Long bookId, Model model) {
+		Book book = bookRepository.findById(bookId).get();
+		model.addAttribute("book", book);		
 		return "editbook";
 	}
 	
 	@PostMapping(value="/edit/save")
 	public String change(Book book){
-		bookRepository.deleteById(book.getId());
+		//bookRepository.deleteById(book.getId());
 		bookRepository.save(book);
 		return "redirect:../booklist";
 	}

@@ -27,6 +27,8 @@ input.readonly-input {
 		<br/><br/>
 		<label for ="isbn">ISBN:</label>
 		<input type="text" id="isbn" th:field="*{isbn}"/>
+		<input th:type="hidden" th:field="*{category.id}"/>
+		<input th:type="hidden" th:field="*{category.name}"/>
 		<br/><br/>
 		<input type="submit" value="Save"></input>
 	</form>
