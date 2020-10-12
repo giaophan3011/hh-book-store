@@ -44,8 +44,18 @@ public class BookstoreApplication {
 						.price(50.0)
 						.category(categoryRepository.findById(Long.valueOf(3)).get())
 						.build();
+				
+				Book book3 = Book.builder()
+						.author("Test delete")
+						.title("Test delete")
+						.isbn("Test delete")
+						.year(1929)
+						.price(50.0)
+						.category(categoryRepository.findById(Long.valueOf(3)).get())
+						.build();
 				repository.save(book1);
 				repository.save(book2);
+				repository.save(book3);
 				
 				User user1 = User.builder().username("user").passwordHash("$2y$12$dsIwDSNc35tM9oNaCB0HwuRbkFLfnAVrpRqrMzUpbW/77eR.KBpv.").email("test1@test.fi").role("USER").build();						
 				User user2 = User.builder().username("admin").passwordHash("$2y$12$dsIwDSNc35tM9oNaCB0HwuRbkFLfnAVrpRqrMzUpbW/77eR.KBpv.").email("test2@test.fi").role("ADMIN").build();
